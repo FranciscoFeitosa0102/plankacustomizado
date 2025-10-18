@@ -1,0 +1,21 @@
+-- Adicionar campos finais restantes
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_favorites_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_public_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_private_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_archived_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_deleted_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_inactive_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_active_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_pending_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_completed_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_cancelled_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_failed_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_success_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_error_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_warning_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_info_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_debug_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_trace_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_verbose_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_quiet_by_default BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS enable_silent_by_default BOOLEAN NOT NULL DEFAULT false;

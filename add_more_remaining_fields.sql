@@ -1,0 +1,21 @@
+-- Adicionar mais campos restantes
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_editor_mode TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_theme TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_language TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_timezone TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_date_format TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_time_format TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_currency TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_country TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_region TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_city TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_address TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_postal_code TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_phone TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_fax TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_website TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_company TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_department TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_title TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_manager TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_assistant TEXT;

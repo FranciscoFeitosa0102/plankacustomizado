@@ -291,8 +291,11 @@ module.exports = {
       type: 'string',
       required: true,
     },
-    avatar: {
-      type: 'json',
+    avatarUrl: {
+      type: 'string',
+      isNotEmptyString: true,
+      allowNull: true,
+      columnName: 'avatar_url',
     },
     phone: {
       type: 'string',

@@ -1,0 +1,21 @@
+-- Adicionar campos finais finais
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_home_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_dashboard_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_project_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_board_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_list_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_card_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_task_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_comment_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_attachment_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_member_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_label_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_tag_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_cover_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_due_date_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_priority_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_status_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_type_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_category_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_subcategory_view TEXT;
+ALTER TABLE user_account ADD COLUMN IF NOT EXISTS default_version_view TEXT;

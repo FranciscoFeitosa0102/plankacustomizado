@@ -1,0 +1,52 @@
+.panel {
+  padding: 20px;
+
+  .ranking {
+    .rankingItem {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #e1e8ed;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .position {
+        width: 40px;
+        text-align: center;
+        margin-right: 16px;
+
+        .positionNumber {
+          font-weight: bold;
+          font-size: 18px;
+          color: #8b9dc3;
+        }
+      }
+
+      .userInfo {
+        flex: 1;
+
+        .userName {
+          font-weight: 600;
+          font-size: 16px;
+          color: #1a1a1a;
+          margin-bottom: 4px;
+        }
+
+        .userStats {
+          font-size: 14px;
+          color: #8b9dc3;
+        }
+      }
+
+      .score {
+        font-weight: bold;
+        font-size: 16px;
+        color: #4caf50;
+        min-width: 60px;
+        text-align: right;
+      }
+    }
+  }
+}

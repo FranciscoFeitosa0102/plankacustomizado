@@ -1,0 +1,35 @@
+# Dockerfile para o servidor (backend)
+FROM node:18-alpine
+
+# Instalar dependências do sistema
+RUN apk add --no-cache \
+  postgresql-client \
+  python3 \
+  make \
+  g++
+
+# Definir diretório de trabalho
+WORKDIR /app
+
+# Copiar package.json, package-lock.json e requirements.txt
+COPY server/package*.json ./
+COPY server/requirements.txt ./
+
+# Instalar dependências (incluindo dev para nodemon)
+RUN npm ci
+
+# Copiar código fonte
+COPY server/ .
+
+# Criar diretórios necessários
+RUN mkdir -p private public
+
+# Definir permissões
+RUN chown -R node:node /app
+USER node
+
+# Expor porta
+EXPOSE 1337
+
+# Comando para iniciar o servidor
+CMD ["npm", "start"]

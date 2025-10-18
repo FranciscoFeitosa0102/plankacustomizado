@@ -1,0 +1,101 @@
+services:
+  # Banco de dados PostgreSQL
+  postgres:
+    image: postgres:15-alpine
+    container_name: planka-postgres
+    environment:
+      POSTGRES_DB: planka
+      POSTGRES_USER: planka
+      POSTGRES_PASSWORD: planka123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - planka-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U planka -d planka" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis para cache e sessões
+  redis:
+    image: redis:7-alpine
+    container_name: planka-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - planka-network
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend (Server)
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: planka-server
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://planka:planka123@postgres:5432/planka
+      REDIS_URL: redis://redis:6379
+      SECRET_KEY: your-secret-key-change-in-production
+      BASE_URL: http://localhost:1337
+      FRONTEND_URL: http://localhost:3000
+    ports:
+      - "1337:1337"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./server/private:/app/private
+      - ./server/public:/app/public
+    networks:
+      - planka-network
+    restart: unless-stopped
+
+  # Frontend (Client)
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: planka-client
+    environment:
+      REACT_APP_SERVER_BASE_URL: http://localhost:1337
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+    networks:
+      - planka-network
+    restart: unless-stopped
+
+  # Nginx para proxy reverso (opcional)
+  nginx:
+    image: nginx:alpine
+    container_name: planka-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - server
+      - client
+    networks:
+      - planka-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+
+networks:
+  planka-network:
+    driver: bridge
